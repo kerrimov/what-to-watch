@@ -1,7 +1,7 @@
 function App() {
   return (
-    <div className="App">
-      What to watch
+    <div>
+      <h1>What to watch</h1>
     </div>
   );
 }

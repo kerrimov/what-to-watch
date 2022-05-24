@@ -13,3 +13,9 @@ WTW this is a web application that displays a list of movies built using the Rea
 
 3. Run
     `yarn start`
+
+4. Test
+    `yarn test`
+
+5. Build
+    `yarn build`

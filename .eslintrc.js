@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 module.exports = {
     "env": {
         "browser": true,
@@ -24,4 +26,4 @@ module.exports = {
         "semi": ["error", "always"],
         "quotes": ["error", "double"]
     }
-}
+};

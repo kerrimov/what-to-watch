@@ -1,17 +1,18 @@
 import React from "react";
 import { createTheme } from "@mui/material";
+import variables from "../shared/variables.scss"
 
 const customTheme = createTheme({
   palette: {
     primary: {
-      main: "#5fafbe",
-      light: "#92e1f1",
-      dark: "#297f8e"
+      main: variables.primaryMain,
+      light: variables.primaryLight,
+      dark: variables.primaryDark
     },
     secondary: {
-      main: "#f8d8cc",
-      light: "#ffffff",
-      dark: "#c5a79b"
+      main: variables.secondaryMain,
+      light: variables.secondaryLight,
+      dark: variables.secondaryDark
     },
   },
 });

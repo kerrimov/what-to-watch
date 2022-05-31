@@ -1,0 +1,20 @@
+.MuiCardContent-root {
+    background-color: transparent;
+    margin-top: 10px;
+}
+
+a .MuiTypography-root {
+text-decoration: none;
+ cursor: alias;
+}
+
+
+.MuiSvgIcon-root { 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.MuiCard-root {
+    position: relative;
+}

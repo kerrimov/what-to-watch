@@ -1,0 +1,8 @@
+$trailersBackground:  linear-gradient(90deg, rgba(202, 202, 218, 0.5) 0%, rgba(0, 212, 255, 0.5) 100%);
+.MuiContainer-root {
+    background:$trailersBackground, url('https://multiplex.ua/images/b1/94/b1947d64ef86c01173d2a64ce060b6be.jpeg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    object-fit: cover;
+}

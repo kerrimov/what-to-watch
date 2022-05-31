@@ -1,16 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom"; 
 import { ThemeProvider } from "@mui/material";
 import App from "./App";
 import customTheme from "./theme/customTheme";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
+
+ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={customTheme}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter> 
     </ThemeProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );

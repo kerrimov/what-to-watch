@@ -1,10 +1,16 @@
 import React from "react";
 
+import { ThemeProvider } from "@mui/material";
+import customTheme from "./customizing/customTheme";
+
 function App() {
   return (
-      <h1>
-        What to watch
-      </h1>)
+    <>
+      <ThemeProvider theme={customTheme}>
+      
+      </ThemeProvider>
+    </>
+  );
 }
 
 export default App;

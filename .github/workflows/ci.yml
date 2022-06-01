@@ -1,0 +1,36 @@
+name: ci workflow
+
+on:
+  pull_request
+    
+jobs:
+ eslint:
+   name: ESLint
+   runs-on: ubuntu-latest
+   steps:
+      - name: Checkout code  
+        uses: actions/checkout@v3
+      - name: Install modules
+        run: yarn
+      - name: Run ESLint
+        run: yarn run eslint . --ext .js,.jsx,.ts,.tsx
+ test:
+   name: Test
+   runs-on: ubuntu-latest
+   needs: eslint
+   steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run : yarn install
+      - name: Run tests
+        run: yarn test
+ build:
+   name: Build
+   runs-on: ubuntu-latest
+   needs: test
+   steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run : yarn install
+      - name: Build
+        run: yarn build

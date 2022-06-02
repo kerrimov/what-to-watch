@@ -1,4 +1,4 @@
-export interface IVariables {
+export interface Variables {
     primaryMain: string;
     primaryLight: string;
     primaryDark: string;
@@ -7,6 +7,6 @@ export interface IVariables {
     secondaryDark: string;
 }
 
-export const variables: IVariables;
+export const variables: Variables;
 
 export default variables;

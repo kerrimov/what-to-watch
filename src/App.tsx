@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ThemeProvider } from "@mui/material";
-import customTheme from "./customizing/customTheme";
+import customTheme from "./theme/customTheme";
 
 function App() {
   return (

@@ -10,3 +10,4 @@ export interface Variables {
 export const variables: Variables;
 
 export default variables;
+

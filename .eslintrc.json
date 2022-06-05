@@ -1,4 +1,3 @@
-/* eslint-env node */
 {
     "env": {
         "browser": true,
@@ -21,7 +20,8 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "unused-imports"
     ],
     "rules": {
         "semi": [

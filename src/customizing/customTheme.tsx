@@ -1,6 +1,5 @@
-import React from "react";
 import { createTheme } from "@mui/material";
-import variables from "../shared/variables.scss"
+import variables from "../shared/variables.scss";
 
 const customTheme = createTheme({
   palette: {

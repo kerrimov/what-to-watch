@@ -7,13 +7,13 @@ const customTheme = createTheme({
       main: variables.primaryMain,
       light: variables.primaryLight,
       dark: variables.primaryDark,
-      contrastText: "#f0f0f0",
+      contrastText:variables.primaryText,
     },
     secondary: {
       main: variables.secondaryMain,
       light: variables.secondaryLight,
       dark: variables.secondaryDark,
-      contrastText: "rgba(0,0,0,.6)",
+      contrastText: variables.secondaryText,
     },
   },
 });

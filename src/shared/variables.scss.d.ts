@@ -1,3 +1,4 @@
+
 export interface Variables {
     primaryMain: string;
     primaryLight: string;
@@ -6,6 +7,7 @@ export interface Variables {
     secondaryLight: string;
     secondaryDark: string;
 }
+
 
 export const variables: Variables;
 

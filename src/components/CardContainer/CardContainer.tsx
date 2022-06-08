@@ -5,9 +5,9 @@ import FilmCard from '../FilmCard/FilmCard';
 
 export default function BasicGrid() {
 
-  let items = []
+  let cardTemplates = []
   for (let i = 0; i < 7; i++) {
-    items.push(
+    cardTemplates.push(
       <Grid item xs={1.7} key={i}>
         <FilmCard />
       </Grid>
@@ -17,7 +17,7 @@ export default function BasicGrid() {
   return (
     <Box sx={{ mx: "auto", mt: 10, maxWidth: 1300, flexGrow: 1 }}>
       <Grid justifyContent="space-around" container spacing={1}>
-        {items}
+        {cardTemplates}
       </Grid>
     </Box>
   );

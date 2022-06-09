@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import variables from "../shared/variables.scss"
+import variables from "../shared/styles/variables.scss";
 
 const customTheme = createTheme({
   palette: {
@@ -7,7 +7,7 @@ const customTheme = createTheme({
       main: variables.primaryMain,
       light: variables.primaryLight,
       dark: variables.primaryDark,
-      contrastText:variables.primaryText,
+      contrastText: variables.primaryText,
     },
     secondary: {
       main: variables.secondaryMain,

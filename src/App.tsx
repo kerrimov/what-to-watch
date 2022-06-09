@@ -1,15 +1,10 @@
 import React from "react";
 
-import { ThemeProvider } from "@mui/material";
-import customTheme from "./theme/customTheme";
-
 function App() {
   return (
-    <>
-      <ThemeProvider theme={customTheme}>
-      
-      </ThemeProvider>
-    </>
+    <h1>
+      What to watch
+    </h1>
   );
 }
 

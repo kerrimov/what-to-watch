@@ -20,4 +20,4 @@ describe("Click in App", () => {
       expect(like).toBeChecked();
     });
   });
-});
+})

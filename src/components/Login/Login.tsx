@@ -2,7 +2,6 @@ import * as React from "react";
 import { Avatar, Button, Grid, Link, TextField, Typography, Box, Container } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-
 const Login: React.FunctionComponent = () => {
   return (
     <Container component="main" maxWidth="xs">
@@ -18,7 +17,7 @@ const Login: React.FunctionComponent = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Log in
         </Typography>
         <Box component="form" sx={{ mt: 1 }}>
           <TextField
@@ -41,7 +40,7 @@ const Login: React.FunctionComponent = () => {
           />
 
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-            Sign In
+            Log In
           </Button>
           <Grid container>
             <Grid item xs>

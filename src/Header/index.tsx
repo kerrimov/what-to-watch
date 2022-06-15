@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import SearchIcon from "@mui/icons-material/Search";

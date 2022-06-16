@@ -1,4 +1,4 @@
-[
+export const cardData = [
     {
         "default-image-for-card": "https://www.themoviedb.org/t/p/w440_and_h660_face/daeVrgyj0ue8qb3AHyU3UeCwoZz.jpg",
         "default-film-name": "American siege",
@@ -18,10 +18,10 @@
         "film-rating": 78
     },
     {
-        "default-image-for-card": "https://www.themoviedb.org/t/p/w220_and_h330_face/hangTmbxpSV4gpHG7MgSlCWSSFa.jpg",
-        "default-film-name": "The Exorcism of God",
-        "default-film-date": "10 Feb 2022",
-        "film-rating": 68
+        "default-image-for-card": "https://www.themoviedb.org/t/p/w220_and_h330_face/323BP0itpxTsO0skTwdnVmf7YC9.jpg",
+        "default-film-name": "The Intouchables ",
+        "default-film-date": "2 Nov 2011",
+        "film-rating": 83
     },
     {
         "default-image-for-card": "https://www.themoviedb.org/t/p/w220_and_h330_face/tubgEpjTUA7t0kejVMBsNBZDarZ.jpg",
@@ -41,4 +41,4 @@
         "default-film-date": "10 Mar 2022",
         "film-rating": 66
     }
-]
+];

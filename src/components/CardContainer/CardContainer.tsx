@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Box, Grid } from "@mui/material";
-import cardData from "../../mocks/cardData.json";
 import { FilmCard } from "../FilmCard/FilmCard";
+import { cardData } from "../../mocks/cardData";
 
 export const CardContainer = () => {
   return (

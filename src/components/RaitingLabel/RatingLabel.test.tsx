@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { CircularProgressWithLabel } from "../components/RaitingLabel/RaitingLabel";
+import { CircularProgressWithLabel } from "./RaitingLabel";
 
 test("check label", ()=> {
   const { getByText } = render(<CircularProgressWithLabel value={55}/>);

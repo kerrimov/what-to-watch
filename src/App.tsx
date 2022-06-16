@@ -1,21 +1,17 @@
 import React from "react";
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import { Homepage } from "./pages/Homepage"; 
 import { MoviesPage } from "./pages/MoviesPage"; 
 import { TVShows } from "./pages/TVShows"; 
 import { People } from "./pages/People"; 
 import { More } from "./pages/More"; 
 import { NotFoundPage } from "./pages/NotFoundPage"; 
-// import Header from "./Header";
+import { Header } from "./components/Header";
 
 function App() {
   return (
   <>
-      <header>
-        <Link to="/">Homepage</Link>
-        <Link to="/movies">MoviesPage</Link>
-        <Link to="/tvshows">TVShows</Link>
-      </header>
+      <Header />
     <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/movies" element={<MoviesPage />} />

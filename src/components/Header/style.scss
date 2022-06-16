@@ -1,0 +1,45 @@
+
+.header {
+  background: #297f8e;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  & a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 20px; 
+}
+
+.menu {
+  display: flex;
+  padding: 0 20px;
+}
+
+.menu-item {
+  list-style: none;
+  padding: 0 10px;
+}
+
+.login-link {
+  margin-left: auto; 
+  margin-right: 10px; 
+}
+
+.search-btn {
+  display: inline-block;
+}

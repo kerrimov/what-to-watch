@@ -1,8 +1,12 @@
 import * as React from "react";
+import { useDispatch } from "react-redux";
+import { loginAction } from "../../store/reducers/userReducer";
 import { Avatar, Button, Grid, Link, TextField, Typography, Box, Container } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const Login: React.FunctionComponent = () => {
+  const dispatch = useDispatch();
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -39,7 +43,13 @@ const Login: React.FunctionComponent = () => {
             id="password"
           />
 
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+          <Button
+            onClick={() => dispatch(loginAction())}
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
             Log In
           </Button>
           <Grid container>

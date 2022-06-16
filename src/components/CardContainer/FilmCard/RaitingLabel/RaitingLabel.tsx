@@ -1,7 +1,5 @@
 import * as React from "react";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { CircularProgress, Typography, Box } from "@mui/material";
 
 const styles = {
   top: 0,
@@ -15,10 +13,10 @@ const styles = {
 };
 
 interface Props {
-  value: number;
+  filmRating: number;
 }
 
-export const CircularProgressWithLabel = ({ value }: Props) => (
+export const RatingLabel = ({ filmRating }: Props) => (
   <Box sx={{
     position: "relative",
     display: "inline-flex",
@@ -26,14 +24,14 @@ export const CircularProgressWithLabel = ({ value }: Props) => (
     borderRadius: "50%"
   }}
   >
-    <CircularProgress variant="determinate" value={value} />
+    <CircularProgress variant="determinate" value={filmRating} />
     <Box sx={styles}>
       <Typography
         variant="caption"
         component="div"
         color="white"
       >
-        {`${Math.round(value)}%`}
+        {`${Math.round(filmRating)}%`}
       </Typography>
     </Box>
   </Box>

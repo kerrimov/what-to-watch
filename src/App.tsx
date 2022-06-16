@@ -10,18 +10,17 @@ import { Header } from "./components/Header";
 
 function App() {
   return (
-  <>
+    <>
       <Header />
-    <Routes>
+        <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/tvshows" element={<TVShows />} />
           <Route path="/people" element={<People />} />
           <Route path="/more" element={<More />} />
           <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      </>
-  
+        </Routes>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, Grid, CardMedia, Typography, CardActionArea, Checkbox } from "@mui/material";
+import { Card, Grid, CardMedia, CardActionArea, Checkbox } from "@mui/material";
 import { FavoriteBorder, Favorite } from "@mui/icons-material";
 import { CardInfoSection } from "../CardInfoSection/CardInfoSection";
 import { CircularProgressWithLabel } from "../RaitingLabel/RaitingLabel";
@@ -13,34 +13,31 @@ interface Props {
 
 export const FilmCard = ({ image, name, date, rating }: Props) => (
   <Card sx={{ maxWidth: 160, boxShadow: 0, margin: "auto" }}>
-    <CardActionArea href="#">
-      <Grid container justifyContent="flex-end" padding={0}>
+    <CardActionArea href="#" sx={{ position: "relative" }}>
+      <Grid container justifyContent="flex-end" padding={0} sx={{ position: "absolute" }}>
         <Checkbox
           icon={<FavoriteBorder sx={{ color: "primary.main" }} />}
           checkedIcon={<Favorite />}
-          sx={{ p: 0.5 }}
+          sx={{ p: 0.5, position: "relative", zIndex: 1 }}
           title="add to favorite"
         />
       </Grid>
       <CardMedia
-        sx={{ borderRadius: 3, mt: -4 }}
+        sx={{ borderRadius: 3, position: "absolute" }}
         component="img"
         height="225"
         image={image}
         alt={name}
       />
+      <Grid
+        container
+        justifyContent="flex-start"
+        padding={1}
+        sx={{ mt: 0, position: "absolute", top: 195 }}
+      >
+        <CircularProgressWithLabel value={rating} />
+      </Grid>
     </CardActionArea>
-    <Grid
-      container
-      justifyContent="flex-start"
-      padding={1}
-      sx={{ mt: -3.5 }}
-    >
-      <CircularProgressWithLabel value={rating} />
-    </Grid>
-    <CardInfoSection name={name} />
-    <Typography color="text.secondary" sx={{ fontSize: "0.9rem", pr: 1, pl: 1 }}>
-      {date}
-    </Typography>
+    <CardInfoSection name={name} date={date} />
   </Card>
 );

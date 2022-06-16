@@ -26,7 +26,7 @@ export const CircularProgressWithLabel = ({ value }: Props) => (
     borderRadius: "50%"
   }}
   >
-    <CircularProgress variant="determinate" {...{ value }} />
+    <CircularProgress variant="determinate" value={value} />
     <Box sx={styles}>
       <Typography
         variant="caption"

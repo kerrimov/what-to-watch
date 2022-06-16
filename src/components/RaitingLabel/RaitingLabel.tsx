@@ -18,25 +18,23 @@ interface Props {
   value: number;
 }
 
-export const CircularProgressWithLabel = ({value}: Props) => {
-  return (
-    <Box sx={{
-      position: "relative",
-      display: "inline-flex",
-      backgroundColor: "black",
-      borderRadius: "50%"
-    }}
-    >
-      <CircularProgress variant="determinate" {...{value}} />
-      <Box sx={styles}>
-        <Typography
-          variant="caption"
-          component="div"
-          color="white"
-        >
-          {`${Math.round(value)}%`}
-        </Typography>
-      </Box>
+export const CircularProgressWithLabel = ({ value }: Props) => (
+  <Box sx={{
+    position: "relative",
+    display: "inline-flex",
+    backgroundColor: "black",
+    borderRadius: "50%"
+  }}
+  >
+    <CircularProgress variant="determinate" {...{ value }} />
+    <Box sx={styles}>
+      <Typography
+        variant="caption"
+        component="div"
+        color="white"
+      >
+        {`${Math.round(value)}%`}
+      </Typography>
     </Box>
-  );
-};
+  </Box>
+);

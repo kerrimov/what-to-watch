@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { CardInfoSection } from "../components/CardInfoSection/CardInfoSection";
+import { CardInfoSection } from "./CardInfoSection";
 
 test("check film name", () => {
   render(<CardInfoSection name={"American siege"} />);

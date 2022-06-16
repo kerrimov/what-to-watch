@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Card, Grid, CardMedia, CardActionArea, Checkbox } from "@mui/material";
 import { FavoriteBorder, Favorite } from "@mui/icons-material";
-import { CardInfoSection } from "../CardInfoSection/CardInfoSection";
-import { CircularProgressWithLabel } from "../RaitingLabel/RaitingLabel";
+import { CardInfoSection } from "./CardInfoSection";
+import { RatingLabel } from "./RaitingLabel";
 
 interface Props {
   image: string;
@@ -35,7 +35,7 @@ export const FilmCard = ({ image, name, date, rating }: Props) => (
         padding={1}
         sx={{ mt: 0, position: "absolute", top: 195 }}
       >
-        <CircularProgressWithLabel value={rating} />
+        <RatingLabel filmRating={rating} />
       </Grid>
     </CardActionArea>
     <CardInfoSection name={name} date={date} />

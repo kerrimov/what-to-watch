@@ -16,7 +16,7 @@ export const CardContainer = () => {
                      rating={card["film-rating"]}
                    />
                  </Grid>;
-        })};
+        })}
       </Grid>
     </Box>
   );

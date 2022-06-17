@@ -1,7 +1,7 @@
-@import '../../shared/variables.scss'; 
+@import '../../shared/styles/variables.scss'; 
 
 .header {
-background-color: $primary-dark ;
+  background-color: $primary-dark;
   font-family: Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;

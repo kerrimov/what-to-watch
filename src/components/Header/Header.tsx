@@ -13,7 +13,7 @@ export const Header = () => (
     <Container>
       <Toolbar>
           <Link to="/">
-            <img className="logo" src={logo} alt="" />
+            <img className="logo" src={logo} alt="logo" />
           </Link>
           <Navigation />
           <Link to="/" className="login-link">Login</Link>

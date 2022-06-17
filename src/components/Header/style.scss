@@ -1,15 +1,17 @@
+@import '../../shared/variables.scss'; 
+
 .header {
-  background: #297f8e;
+background-color: $primary-dark ;
   font-family: Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
-  color: #ffffff;
+  color: $secondary-light;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
   & a {
     text-decoration: none;
-    color: #ffffff;
+    color: $secondary-light;
   }
 }
 

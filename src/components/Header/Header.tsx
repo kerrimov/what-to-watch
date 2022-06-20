@@ -1,31 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { AppBar, Toolbar} from "@mui/material";
-import { Navigation } from "./components/Navigation";
-import { SearchField } from "../SearchField";
-import "./style.scss";
-import logo from "./logo.svg";
-
-
-const style = {
-  bgcolor: "primary.dark",
-};
+import { AppBar, Toolbar } from "@mui/material";
+import { Logo } from "./Logo";
+import { Navigation } from "./Navigation";
+import { LoginLink } from "./LoginLink";
+import "./Header.scss";
 
 export const Header = () => (
   <AppBar>
-          <Toolbar  className="header" sx={style}>
-
-         <div className="left-container">
-             <Link to="/">
-              <img className="logo" src={logo} alt="logo" />
-            </Link>
-             <Navigation />
-          </div>
-          <div className="right-container">
-          <SearchField />
-          <Link to="/" className="login-link">Login</Link>
-          </div>
-
-      </Toolbar>
+    <Toolbar className="header">
+      <div className="left-container">
+        <Logo />
+        <Navigation />
+      </div>
+      <div className="right-container">
+        <LoginLink />
+      </div>
+    </Toolbar>
   </AppBar>
 );

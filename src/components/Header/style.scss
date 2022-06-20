@@ -37,10 +37,16 @@
 }
 
 .login-link {
-  margin-left: auto; 
-  margin-right: 10px; 
+  display: inline-block; 
+  margin-left: 20px; 
 }
 
-.search-btn {
-  display: inline-block;
+.left-container {
+  display: flex; 
+  align-items: center; 
+}
+
+.right-container {
+  display: flex; 
+  align-items: center; 
 }

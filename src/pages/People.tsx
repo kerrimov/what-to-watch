@@ -3,12 +3,10 @@ const wrapperMain = {
   paddingTop: "120px",
 };
 
-const People = () => {
-  return (
+const People = () => (
     <div style={wrapperMain}>
       <h1>People page</h1>
     </div>
   );
-};
 
 export { People };

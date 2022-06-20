@@ -1,6 +1,7 @@
 import React from "react";
+
 const wrapperMain = {
-  paddingTop: "120px",
+  padding: "120px 50px 50px 50px",
 };
 
 const TVShows = () => (

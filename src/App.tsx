@@ -13,7 +13,6 @@ import { Header } from "./components/Header";
 function App() {
   return (
     <>
-      <ThemeProvider theme={customTheme}>
         <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -23,7 +22,6 @@ function App() {
           <Route path="/more" element={<More />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </ThemeProvider>
     </>
   );
 }

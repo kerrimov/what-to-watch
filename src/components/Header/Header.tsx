@@ -6,9 +6,14 @@ import { SearchField } from "../SearchField";
 import "./style.scss";
 import logo from "./logo.svg";
 
+
+const style = {
+  bgcolor: "primary.dark",
+};
+
 export const Header = () => (
   <AppBar>
-          <Toolbar  className="header">
+          <Toolbar  className="header" sx={style}>
 
           <div className="left-container">
             <Link to="/">

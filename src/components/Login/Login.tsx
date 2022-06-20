@@ -1,70 +1,51 @@
-import * as React from "react";
-import  {useDispatch}  from "react-redux";
-import { loginAction } from "../../store/reducers/userReducer";
-import { Avatar, Button, Grid, Link, TextField, Typography, Box, Container } from "@mui/material";
+import React, { useEffect } from "react";
+import { Avatar, Typography, Box, Container } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { createSession, getAccount, requestToken } from "../../apis/userAuth";
+import { loginAction } from "./userReducer";
+import { useDispatch } from "react-redux";
+import { LoginForm, LoginSupport } from "./LoginParts";
 
 const Login: React.FunctionComponent = () => {
+  const style = {
+    marginTop: 8,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
+
   const dispatch = useDispatch();
+  const fetchToken = async () => {
+    const token = await requestToken();
+    const redirectUrl = `https://www.themoviedb.org/authenticate/${token}?redirect_to=http://localhost:3000/`;
+    window.open(redirectUrl, "_self", "noreferrer");
+  };
+
+  const fetchSessionAndGetUser = async (token:string) => {
+    const sessionId = await createSession(token);
+    localStorage.setItem("session_id", sessionId);
+    const account = await getAccount(sessionId);
+    dispatch(loginAction(account));
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("request_token");
+    if (token) {
+      fetchSessionAndGetUser(token);
+    }
+  }, []);
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <Box sx={style}>
         <Avatar sx={{ m: 1, bgcolor: "primary.dark" }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Log in
         </Typography>
-        <Box component="form" sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-          />
-
-          <Button
-            onClick={() => dispatch(loginAction())}
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Log In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </Box>
+        <LoginForm handleClick={fetchToken} />
+        <LoginSupport />
       </Box>
     </Container>
   );

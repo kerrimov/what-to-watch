@@ -3,12 +3,10 @@ const wrapperMain = {
   paddingTop: "120px",
 };
 
-const MoviesPage = () => {
-  return (
+const MoviesPage = () => (
     <div style={wrapperMain}>
       <h1>Movies page</h1>
     </div>
   );
-};
 
 export { MoviesPage };

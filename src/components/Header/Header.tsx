@@ -1,26 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-import SearchIcon from "@mui/icons-material/Search";
+import { AppBar, Toolbar} from "@mui/material";
 import { Navigation } from "./components/Navigation";
+import { SearchField } from "../SearchField";
 import "./style.scss";
 import logo from "./logo.svg";
 
 export const Header = () => (
-  <AppBar className="header">
-    <Container>
-      <Toolbar>
-          <Link to="/">
-            <img className="logo" src={logo} alt="logo" />
-          </Link>
-          <Navigation />
+  <AppBar>
+          <Toolbar  className="header">
+
+          <div className="left-container">
+            <Link to="/">
+              <img className="logo" src={logo} alt="logo" />
+            </Link>
+            <Navigation />
+          </div>
+          <div className="right-container">
+          <SearchField />
           <Link to="/" className="login-link">Login</Link>
-          <Link to="/" className="search-btn">
-            <SearchIcon />
-          </Link>
+          </div>
+
       </Toolbar>
-    </Container>
   </AppBar>
 );

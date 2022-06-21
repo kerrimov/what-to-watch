@@ -1,4 +1,4 @@
-import { api } from "../shared/api";
+import { api } from "../../../shared/api";
 
 export const requestToken = async () => {
   const {
@@ -27,7 +27,7 @@ export const getAccount = async (sessionId: string) => {
   return data;
 };
 
-export const deleteSession = async (sessionId:string) => {
+export const deleteSession = async (sessionId: string) => {
   localStorage.removeItem("request_token");
   localStorage.removeItem("session_id");
   return await api.delete("/authentication/session", { data: { sessionId } });

@@ -28,7 +28,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({ handleClick }) => {
       />
       <Button
         onClick={() => handleClick()}
-        type="submit"
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}

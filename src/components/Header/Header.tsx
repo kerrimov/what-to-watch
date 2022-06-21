@@ -15,11 +15,11 @@ export const Header = () => (
   <AppBar>
           <Toolbar  className="header" sx={style}>
 
-          <div className="left-container">
-            <Link to="/">
+         <div className="left-container">
+             <Link to="/">
               <img className="logo" src={logo} alt="logo" />
             </Link>
-            <Navigation />
+             <Navigation />
           </div>
           <div className="right-container">
           <SearchField />

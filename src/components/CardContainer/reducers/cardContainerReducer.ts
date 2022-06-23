@@ -1,47 +1,23 @@
-export const GET_POPULAR_MOVIES = "GET_POPULAR_MOVIES"
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchPopularMovies } from "../api/services/fetchPopularMovies";
+import { InitialCardsState, PayloadCards } from "../types/CardTypes";
 
-// const initialState: any = {
-//   card: []
-// };
-
-// export const cardContainerReducer = (state = initialState, { type = GET_POPULAR_MOVIES, payload }) => {
-//   switch (type) {
-//     case GET_POPULAR_MOVIES:
-//       return { ...state, card: payload.data }
-//     default:
-//       return state;
-//   }
-// }
-
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-
-export const fetchPopularMovies = createAsyncThunk(
-  "cards",
-  async function() {
-    const response = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=746ddaff6c6c35161177d073645fcc5d&language=en-US&page=1");
-    const data = await response.json();
-    return data.results;
-  }
-);
-
-const cardContainerSlice: any = createSlice({
-  name: "cards",
+const cardContainerSlice = createSlice({
+  name: "cardContainerSlice",
   initialState: {
-    cards: [{"id": 1}],
+    cards: [],
     status: null,
   },
   reducers: {},
-  extraReducers: {
-    [fetchPopularMovies.pending ]: (state: { status: string; }) => {
-      state.status = "loading";
-    },
-    [fetchPopularMovies.fulfilled]: (state: { status: string; cards: any; }, action: { payload: any; }) => {
-      state.status = "resolved";
+  extraReducers: (loadCardData) => {
+    loadCardData.addCase(fetchPopularMovies.fulfilled, (state: InitialCardsState, action: PayloadCards) => {
+      state.status = true;
       state.cards = action.payload;
-    },
+    });
+    loadCardData.addCase(fetchPopularMovies.rejected, (state: InitialCardsState) => {
+      state.status = false;
+    });
   },
-})
+});
 
 export default cardContainerSlice.reducer;
-
-//export const { fetchPopularMovies } = cardContainerSlice.actions;

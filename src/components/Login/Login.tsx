@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchSessionAndGetUser, fetchToken } from "./userReducer/actions/asyncAction";
+import { userRequestAction } from "./userReducer/actions/actionCreators";
+import { LoginForm } from "./LoginForm/LoginForm";
+import { LoginSupport } from "./LoginSupport/LoginSupport";
 import { Avatar, Typography, Box, Container } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { createSession, getAccount, requestToken } from "./LoginApi/userAuth";
-import { loginAction, loginErrorAction, userRequestAction } from "./userReducer";
-import { useDispatch } from "react-redux";
-import { LoginForm, LoginSupport } from "./LoginParts";
+import { ThunkAction } from "redux-thunk";
 
 const Login: React.FunctionComponent = () => {
   const style = {
@@ -15,34 +17,14 @@ const Login: React.FunctionComponent = () => {
   };
 
   const dispatch = useDispatch();
-  const fetchToken = async () => {
-    try {
-      const token = await requestToken();
-      const redirectUrl = `https://www.themoviedb.org/authenticate/${token}?redirect_to=http://localhost:3000/`;
-      window.open(redirectUrl, "_self", "noreferrer");
-    } catch (error) {
-      dispatch(loginErrorAction());
-    }
-  };
-
-  const fetchSessionAndGetUser = async (token: string) => {
-    try {
-      const sessionId = await createSession(token);
-      localStorage.setItem("session_id", sessionId);
-      const account = await getAccount(sessionId);
-      dispatch(loginAction(account));
-    } catch (error) {
-      dispatch(loginErrorAction());
-    }
-  };
 
   useEffect(() => {
     const token = localStorage.getItem("request_token");
     if (token) {
       dispatch(userRequestAction());
-      fetchSessionAndGetUser(token);
+      dispatch<any>(fetchSessionAndGetUser(token));
     }
-  });
+  },[]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -53,7 +35,7 @@ const Login: React.FunctionComponent = () => {
         <Typography component="h1" variant="h5">
           Log in
         </Typography>
-        <LoginForm handleClick={fetchToken} />
+        <LoginForm handleClick={dispatch<any>(fetchToken)} />
         <LoginSupport />
       </Box>
     </Container>

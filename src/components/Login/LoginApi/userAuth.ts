@@ -1,4 +1,4 @@
-import { api } from "../../../shared/api";
+import { api } from "../../../shared/api/api";
 
 export const requestToken = async () => {
   const {

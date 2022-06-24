@@ -2,7 +2,7 @@ import { Box, TextField, Button } from "@mui/material";
 import React from "react";
 
 interface LoginFormProps {
-  handleClick: () => void;
+  handleClick: () => Promise<void>
 }
 
 export const LoginForm: React.FC<LoginFormProps> = ({ handleClick }) => {

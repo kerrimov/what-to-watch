@@ -15,8 +15,8 @@ interface userAccountAvatar {
 }
 
 export interface userAccount {
-  avatar: userAccountAvatar | null;
-  id: number | null;
+  avatar: userAccountAvatar | string;
+  id: number | string;
   iso_639_1: string;
   iso_3166_1: string;
   name: string;
@@ -31,21 +31,21 @@ export enum UserActionTypes {
   USER_LOGIN_ERROR = "USER_LOGIN_ERROR",
 }
 
-interface UserRequestAction {
+export interface UserRequestAction {
   type: UserActionTypes.USER_REQUEST;
 }
-interface UserLoginAction {
+export interface UserLoginAction {
   type: UserActionTypes.USER_LOGIN;
   payload: { account: userAccount };
 }
-interface UserLogoutAction {
+export interface UserLogoutAction {
   type: UserActionTypes.USER_LOGOUT;
 }
-interface UserLoginErrorAction {
+export interface UserLoginErrorAction {
   type: UserActionTypes.USER_LOGIN_ERROR;
 }
 
-export type UserAction =
+export type UserActions =
   | UserRequestAction
   | UserLoginAction
   | UserLogoutAction

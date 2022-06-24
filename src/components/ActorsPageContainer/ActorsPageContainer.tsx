@@ -30,12 +30,10 @@ export const ActorsPageContainer = () => {
             knownFor: array.join(", "),
             img: actor.profile_path
           });
-          
         });
         console.log(actors);
         dispatch(actorsActions.setActors({actors: actors}));
         console.log(res.data.results);
-        
       });
   }, [dispatch]);
   

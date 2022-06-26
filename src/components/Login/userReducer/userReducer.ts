@@ -5,31 +5,44 @@ const initialState: UserState = {
   isLoggedIn: false,
   error: false,
   account: {
-    avatar: "No avatar",
-    id: "no id",
-    iso_639_1: "",
-    iso_3166_1: "",
+    avatar: {
+      gravatar: {
+        hash: "",
+      },
+      tmdb: {
+        avatar_path: "",
+      },
+    },
+    id: 0,
     name: "",
     include_adult: false,
     username: "",
   },
 };
 
-export const userReducer = (state = initialState, action: UserActions): UserState => {
+export const userReducer = (state: UserState = initialState, action: UserActions) => {
   switch (action.type) {
-    case UserActionTypes.USER_LOGIN:
+    case UserActionTypes.USER_REQUEST:
+      return { ...state, isFetching: true };
+    case UserActionTypes.USER_REQUEST_SUCCESS:
+      return { ...state, isFetching: false };
+    case UserActionTypes.USER_REQUEST_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case UserActionTypes.USER_LOGIN_SUCCESS:
       return {
         ...state,
         isLoggedIn: true,
         isFetching: false,
-        account: { ...state.account, ...action.payload.account},
+        account: { ...action.payload.account },
       };
-    case UserActionTypes.USER_LOGOUT:
-      return { ...state, ...initialState };
-    case UserActionTypes.USER_REQUEST:
-      return { ...state, isFetching: true };
     case UserActionTypes.USER_LOGIN_ERROR:
-      return { ...state, error: true, isFetching: false };
+      return { ...state, error: true, isFetching: false, isLoggedIn: false };
+    case UserActionTypes.USER_LOGOUT:
+      return { ...initialState };
     default:
       return state;
   }

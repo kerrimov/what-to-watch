@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchSessionAndGetUser, fetchToken } from "./userReducer/actions/asyncAction";
-import { userRequestAction } from "./userReducer/actions/actionCreators";
-import { LoginForm } from "./LoginForm/LoginForm";
-import { LoginSupport } from "./LoginSupport/LoginSupport";
+import { Dispatch } from "redux";
 import { Avatar, Typography, Box, Container } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { ThunkAction } from "redux-thunk";
+import { fetchSessionAndGetUser, fetchToken } from "./LoginApi/services/services";
+import { LoginForm } from "./LoginForm/LoginForm";
+import { LoginSupport } from "./LoginSupport/LoginSupport";
+import { UserActions } from "./types/user";
+import { UserKeys } from "./LoginApi/constants/UserKeys";
 
-const Login: React.FunctionComponent = () => {
+export const Login: React.FC = () => {
   const style = {
     marginTop: 8,
     display: "flex",
@@ -16,15 +17,18 @@ const Login: React.FunctionComponent = () => {
     alignItems: "center",
   };
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<Dispatch<UserActions>>();
+
+  const runFetchToken = () => {
+    fetchToken()(dispatch);
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem("request_token");
+    const token = localStorage.getItem(UserKeys.TOKEN);
     if (token) {
-      dispatch(userRequestAction());
-      dispatch<any>(fetchSessionAndGetUser(token));
+      fetchSessionAndGetUser(token)(dispatch);
     }
-  },[]);
+  }, []);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -35,11 +39,9 @@ const Login: React.FunctionComponent = () => {
         <Typography component="h1" variant="h5">
           Log in
         </Typography>
-        <LoginForm handleClick={dispatch<any>(fetchToken)} />
+        <LoginForm handleClick={runFetchToken} />
         <LoginSupport />
       </Box>
     </Container>
   );
 };
-
-export default Login;

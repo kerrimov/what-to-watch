@@ -1,25 +1,27 @@
 import { api } from "../../../shared/api/api";
+import { Endpoints } from "./constants/endpoints";
+import { UserKeys } from "./constants/UserKeys";
 
 export const requestToken = async () => {
   const {
     data: { request_token },
-  } = await api.get("/authentication/token/new");
-  localStorage.setItem("request_token", request_token);
+  } = await api.get(Endpoints.TOKEN_URL);
+  localStorage.setItem(UserKeys.TOKEN, request_token);
   return request_token;
 };
 
 export const createSession = async (requestToken: string) => {
   const {
     data: { session_id },
-  } = await api.post("/authentication/session/new", {
+  } = await api.post(Endpoints.NEW_SESSION, {
     request_token: requestToken,
   });
-  localStorage.setItem("session_id", session_id);
+  localStorage.setItem(UserKeys.SESSION_ID, session_id);
   return session_id;
 };
 
 export const getAccount = async (sessionId: string) => {
-  const { data } = await api.get("/account", {
+  const { data } = await api.get(Endpoints.ACCOUNT, {
     params: {
       session_id: sessionId,
     },
@@ -28,7 +30,7 @@ export const getAccount = async (sessionId: string) => {
 };
 
 export const deleteSession = async (sessionId: string) => {
-  localStorage.removeItem("request_token");
-  localStorage.removeItem("session_id");
-  return await api.delete("/authentication/session", { data: { sessionId } });
+  localStorage.removeItem(UserKeys.TOKEN);
+  localStorage.removeItem(UserKeys.SESSION_ID);
+  return await api.delete(Endpoints.SESSION, { data: { sessionId } });
 };

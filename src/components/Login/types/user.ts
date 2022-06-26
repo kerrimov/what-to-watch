@@ -10,15 +10,13 @@ interface userAccountAvatar {
     hash: string;
   };
   tmdb: {
-    avatar_path: string | null;
+    avatar_path: string;
   };
 }
 
 export interface userAccount {
-  avatar: userAccountAvatar | string;
-  id: number | string;
-  iso_639_1: string;
-  iso_3166_1: string;
+  avatar: userAccountAvatar;
+  id: number;
   name: string;
   include_adult: boolean;
   username: string;
@@ -26,7 +24,9 @@ export interface userAccount {
 
 export enum UserActionTypes {
   USER_REQUEST = "USER_REQUEST",
-  USER_LOGIN = "USER_LOGIN",
+  USER_REQUEST_SUCCESS = "USER_REQUEST_SUCCESS",
+  USER_REQUEST_FAILURE = "USER_REQUEST_FAILURE",
+  USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS",
   USER_LOGOUT = "USER_LOGOUT",
   USER_LOGIN_ERROR = "USER_LOGIN_ERROR",
 }
@@ -34,8 +34,14 @@ export enum UserActionTypes {
 export interface UserRequestAction {
   type: UserActionTypes.USER_REQUEST;
 }
+export interface UserRequestSuccessAction {
+  type: UserActionTypes.USER_REQUEST_SUCCESS;
+}
+export interface UserRequestFailureAction {
+  type: UserActionTypes.USER_REQUEST_FAILURE;
+}
 export interface UserLoginAction {
-  type: UserActionTypes.USER_LOGIN;
+  type: UserActionTypes.USER_LOGIN_SUCCESS;
   payload: { account: userAccount };
 }
 export interface UserLogoutAction {
@@ -49,4 +55,6 @@ export type UserActions =
   | UserRequestAction
   | UserLoginAction
   | UserLogoutAction
-  | UserLoginErrorAction;
+  | UserLoginErrorAction
+  | UserRequestSuccessAction
+  | UserRequestFailureAction;

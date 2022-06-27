@@ -3,7 +3,8 @@ import { AppBar, Toolbar } from "@mui/material";
 import { Logo } from "./Logo";
 import { Navigation } from "./Navigation";
 import { LoginLink } from "./LoginLink";
-import "./Header.scss";
+import { SearchField } from "../SearchField";
+import "./style.scss";
 
 export const Header = () => (
   <AppBar>
@@ -13,6 +14,7 @@ export const Header = () => (
         <Navigation />
       </div>
       <div className="right-container">
+        <SearchField />
         <LoginLink />
       </div>
     </Toolbar>

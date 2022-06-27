@@ -5,7 +5,7 @@ import { API_TOKEN } from "../../shared/api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { actorsActions } from "../../store/store";
 import { ActorCard } from "./ActorCard";
-import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 
 
 interface RootState {
@@ -39,12 +39,13 @@ export const ActorsPageContainer = () => {
   
 
   return (
-    <Box>
+    <Grid container spacing={1} sx={{pl: "6rem"}}>
       {actors && 
         actors.map((actor: any, index: any)=> {
-          return <Box key={index}><ActorCard name={actor.name} id={actor.id} knownFor={actor.knownFor} img={actor.img}/></Box>;
+          // return <Grid item key={index} xs={12} md={3}><ActorCard name={actor.name} id={actor.id} knownFor={actor.knownFor} img={actor.img}/></Grid>;
+          return <Grid item key={index} xs={12} md={3}><ActorCard {...actor}/></Grid>;
         })
       }
-    </Box>
+    </Grid>
   );
 };

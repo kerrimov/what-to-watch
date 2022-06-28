@@ -22,18 +22,21 @@ export const ActorsPageContainer = () => {
       .then(res=>{
         const actors = res.data.results.map((actor: any)=>{
           const array = actor.known_for.map((film: any)=>{
-            return film.title;
-          });
+            if (film.media_type === "movie") {
+            return film.original_title;
+          }
+          else if (film.media_type === "tv") {
+            return film.original_name;
+          }
+        });
           return ({ 
             id: actor.id,
             name: actor.name,
-            knownFor: array.join(", "),
-            img: actor.profile_path
+            knownFor: array.join(", ").slice(0, 40)+"...",
+            img: `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
           });
         });
-        console.log(actors);
         dispatch(actorsActions.setActors({actors: actors}));
-        console.log(res.data.results);
       });
   }, [dispatch]);
   
@@ -42,7 +45,6 @@ export const ActorsPageContainer = () => {
     <Grid container spacing={1} sx={{pl: "6rem"}}>
       {actors && 
         actors.map((actor: any, index: any)=> {
-          // return <Grid item key={index} xs={12} md={3}><ActorCard name={actor.name} id={actor.id} knownFor={actor.knownFor} img={actor.img}/></Grid>;
           return <Grid item key={index} xs={12} md={3}><ActorCard {...actor}/></Grid>;
         })
       }

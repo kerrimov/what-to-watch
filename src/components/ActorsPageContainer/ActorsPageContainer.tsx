@@ -5,7 +5,7 @@ import { API_TOKEN } from "../../shared/api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { actorsActions } from "../../store/store";
 import { ActorCard } from "./ActorCard";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 
 interface RootState {
@@ -40,14 +40,14 @@ export const ActorsPageContainer = () => {
       });
   }, [dispatch]);
   
-
   return (
     <Grid container spacing={1} sx={{pl: "6rem"}}>
-      {actors && 
-        actors.map((actor: any, index: any)=> {
-          return <Grid item key={index} xs={12} md={3}><ActorCard {...actor}/></Grid>;
-        })
-      }
+      <Typography variant="h4" sx={{width: "100%", mt: "40px", mb: "40px"}} paragraph>Popular people</Typography>
+        {actors && 
+          actors.map((actor: any, index: any)=> {
+            return <Grid item key={index} xs={12} md={3}><ActorCard {...actor}/></Grid>;
+          })
+        }
     </Grid>
   );
 };

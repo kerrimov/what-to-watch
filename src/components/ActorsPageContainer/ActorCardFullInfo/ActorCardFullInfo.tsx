@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_TOKEN } from "../../../shared/api/api";
+import { Social } from "../../Footer/Social";
 
 interface Actor {
   actor: {
@@ -36,6 +37,7 @@ const styles = {
     height: 600,
     borderRadius: "10px",
     margin: "0 20px 20px 0",
+    boxShadow: "rgb(38, 57, 77) 0px 20px 30px -10px",
   },
   heading: {
     paddingTop: "20px",
@@ -61,6 +63,7 @@ export const ActorCardFullInfo = () => {
       <Box sx={styles.wrapper}>
         <Box sx={styles.leftSideBar}>
             <Avatar src={`https://image.tmdb.org/t/p/w500/${actor?.profile_path}`} alt={actor?.name} variant="square" sx={styles.avatar}/>
+            <Social />
             <Typography variant="h4">Personal Info</Typography>
             <Typography variant="h5" sx={styles.heading}>Known For</Typography>
             <Typography variant="h6">{actor?.known_for_department}</Typography>
@@ -74,8 +77,11 @@ export const ActorCardFullInfo = () => {
          <Box sx={styles.main}>
             <Typography variant="h3">{actor?.name}</Typography>
             <Typography variant="h5" sx={styles.heading}>Biography</Typography>
-            <Typography>{ showMore ? actor?.biography: actor?.biography.slice(0, 400) + "..." }</Typography>
-              { !showMore &&
+            <Typography> 
+              { showMore ? actor?.biography : (actor?.biography.length > 400 ?
+                 actor?.biography.slice(0, 400) + "..." : actor?.biography.slice(0, 400) + "" ) }
+            </Typography>
+              { !showMore && (actor?.biography.length > 400) &&
                 <Button onClick={()=>{setShowMore(true);}}>Show more &gt;</Button>
               } 
         </Box>

@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchPopularMovies } from "../api/services/fetchPopularMovies";
-import { InitialCardsState, PayloadCards } from "../types/CardTypes";
+import { InitialCardsState, PayloadCards, PayloadCardsError } from "../types/CardTypes";
 
 const cardContainerSlice = createSlice({
   name: "cardContainerSlice",
   initialState: {
     cards: [],
-    status: null,
+    status: false,
+    error: null
   },
   reducers: {},
   extraReducers: (loadCardData) => {
@@ -14,8 +15,9 @@ const cardContainerSlice = createSlice({
       state.status = true;
       state.cards = action.payload;
     });
-    loadCardData.addCase(fetchPopularMovies.rejected, (state: InitialCardsState) => {
+    loadCardData.addCase(fetchPopularMovies.rejected, (state: InitialCardsState, action: PayloadCardsError) => {
       state.status = false;
+      state.error = action.error;
     });
   },
 });

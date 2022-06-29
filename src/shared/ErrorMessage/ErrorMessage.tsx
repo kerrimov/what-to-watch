@@ -1,14 +1,20 @@
 import React from "react";
 import { Alert, AlertTitle, Box } from "@mui/material";
+import { SerializedError } from "@reduxjs/toolkit";
 
-export const ErrorMessage = () => {
+interface ErrorMessageProps {
+    error: SerializedError
+}
+
+export const ErrorMessage = ({error}: ErrorMessageProps) => {
+
     return (
-        <Box justifyContent="center" sx={{ display: "flex" }}>
+        <Box justifyContent="center" align-items="center" sx={{ display: "flex" }}>
             <Alert severity="error" sx={{ display: "flex", width: 300 }} >
                 <AlertTitle>
                     Error
                 </AlertTitle>
-                Oops something went wrong...
+                {error.message}
             </Alert>
         </Box>
     );

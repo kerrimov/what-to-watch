@@ -1,3 +1,5 @@
+import { SerializedError } from "@reduxjs/toolkit";
+
 export interface Card {
     "id": number;
     "poster_path": string;
@@ -8,9 +10,14 @@ export interface Card {
 
 export interface InitialCardsState {
     cards: Array<Card>,
-    status: null | boolean
+    status: boolean,
+    error: null | SerializedError
 };
 
 export interface PayloadCards {
     payload: Array<Card>
+};
+
+export interface PayloadCardsError {
+    error: SerializedError
 };

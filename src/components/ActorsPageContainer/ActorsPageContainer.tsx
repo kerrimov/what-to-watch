@@ -1,24 +1,25 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_TOKEN } from "../../shared/api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { actorsActions } from "../../store/store";
 import { ActorCard } from "./ActorCard";
 import { Grid, Typography } from "@mui/material";
-
+import { Pagination } from "./ActorsPagination/Pagination";
 
 interface RootState {
-  actors: any
+  actors: any;
 }
 
 export const ActorsPageContainer = () => {
 
+  const [currentPage, setCurrentPage] = useState(1);
   const actors = useSelector((state: RootState)=>state.actors);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/person/popular?api_key=${API_TOKEN}`)
+    axios.get(`https://api.themoviedb.org/3/person/popular?api_key=${API_TOKEN}&page=${currentPage}`)
       .then(res=>{
         const actors = res.data.results.map((actor: any)=>{
           const array = actor.known_for.map((film: any)=>{
@@ -38,9 +39,10 @@ export const ActorsPageContainer = () => {
         });
         dispatch(actorsActions.setActors({actors: actors}));
       });
-  }, [dispatch]);
+  }, [currentPage]);
   
   return (
+    <>
     <Grid container spacing={1} sx={{pl: "6rem"}}>
       <Typography variant="h4" sx={{width: "100%", mt: "40px", mb: "40px"}} paragraph>Popular people</Typography>
         {actors && 
@@ -49,5 +51,9 @@ export const ActorsPageContainer = () => {
           })
         }
     </Grid>
+    {
+      actors && <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
+    }
+    </>
   );
 };

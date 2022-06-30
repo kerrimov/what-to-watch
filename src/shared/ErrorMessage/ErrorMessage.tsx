@@ -9,7 +9,7 @@ interface ErrorMessageProps {
 export const ErrorMessage = ({error}: ErrorMessageProps) => {
 
     return (
-        <Box justifyContent="center" align-items="center" sx={{ display: "flex" }}>
+        <Box justifyContent="center" align-items="center" sx={{ display: "flex", mt: 15 }}>
             <Alert severity="error" sx={{ display: "flex", width: 300 }} >
                 <AlertTitle>
                     Error

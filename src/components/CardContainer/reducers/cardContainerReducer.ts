@@ -7,7 +7,7 @@ const cardContainerSlice = createSlice({
   initialState: {
     cards: [],
     status: false,
-    error: null
+    error: {}
   },
   reducers: {},
   extraReducers: (loadCardData) => {

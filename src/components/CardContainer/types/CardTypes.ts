@@ -11,7 +11,7 @@ export interface Card {
 export interface InitialCardsState {
     cards: Array<Card>,
     status: boolean,
-    error: null | SerializedError
+    error: SerializedError
 };
 
 export interface PayloadCards {

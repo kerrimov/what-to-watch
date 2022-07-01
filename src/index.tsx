@@ -1,21 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@mui/material";
-import App from "./App";
 import customTheme from "./theme/customTheme";
-import { BrowserRouter }from "react-router-dom";
+import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
-    <ThemeProvider theme={customTheme}>
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
-    </ThemeProvider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <ThemeProvider theme={customTheme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
+  </React.StrictMode>,
 );

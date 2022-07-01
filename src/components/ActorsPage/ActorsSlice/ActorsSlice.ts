@@ -1,25 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ActorsState } from "../types/actor";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchActors } from "../ActorsApi/services/services";
+import { Actor, ActorsState } from "../types/actors";
 
-const initialState:ActorsState = {
-    actors: []
-}
+const initialState: ActorsState = {
+  actors: [],
+  isFetching: false,
+  error: "",
+};
 
 export const actorsSlice = createSlice({
-    name: "user",
-    initialState,
-    reducers: {
-      run(state) {
-        state.actors.push(1);
-      },
-     
-      
+  name: "actors",
+  initialState,
+  reducers: {},
+  extraReducers: {
+    [fetchActors.pending.type]: (state) => {
+      state.isFetching = true;
     },
-    extraReducers:{
-        
+    [fetchActors.fulfilled.type]: (state, action: PayloadAction<Actor[]>) => {
+      state.isFetching = false;
+      state.error = "";
+      state.actors = action.payload;
     },
-  });
-
-  export const actorsActions = actorsSlice.actions
-  
-  export default actorsSlice.reducer;
+    [fetchActors.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    },
+  },
+});

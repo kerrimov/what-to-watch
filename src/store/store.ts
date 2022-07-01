@@ -1,12 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { actorsSlice } from "../components/ActorsPage/ActorsSlice/ActorsSlice";
 
-export const store = () =>
-  configureStore({
-    reducer: {
-      actors:actorsSlice
-  }});
+const rootReducer = combineReducers({ actors: actorsSlice.reducer });
 
+export const store =
+  configureStore({
+    reducer: rootReducer,
+  });
 
 export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof rootReducer>;
+
+

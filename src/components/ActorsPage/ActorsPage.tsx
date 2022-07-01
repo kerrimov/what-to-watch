@@ -1,27 +1,30 @@
 import React, { useEffect } from "react";
-//mport { Grid } from "@mui/material";
-//import { ActorCard } from "./ActorCard/ActorCard";
+import { Grid } from "@mui/material";
+import { useAppSelector } from "./hooks/hooks";
+import { ActorCard } from "./ActorCard/ActorCard";
+import { fetchActors } from "./ActorsApi/services/services";
+import { Actor } from "./types/actors";
 import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store";
 
-export const ActorsPage: React.FC = () => (
+export const ActorsPage: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const actors = useAppSelector((state) => state.actors.actors);
 
-const dispatch = useDispatch()<AppDispatch>
+  useEffect(() => {
+    dispatch(fetchActors());
+  }, []);
 
-useEffect(()=>{
-    dispatch(fetchActors())
-})
-
-
-   
-
-//   <Grid container spacing={1} sx={{ pl: "6rem" }}>
-//     {actors &&
-//       actors.map((actor: any, index: any) => {
-//         return (
-//           <Grid item key={index} xs={12} md={3}>
-//             <ActorCard {...actor} />
-//           </Grid>
-//         );
-//       })}
-//   </Grid>
-);
+  return (
+    <Grid container spacing={1} sx={{ pl: "6rem" }}>
+      {actors &&
+        actors.map((actor: Actor, index: number) => {
+          return (
+            <Grid item key={index} xs={12} md={3}>
+              <ActorCard {...actor} />
+            </Grid>
+          );
+        })}
+    </Grid>
+  );
+};

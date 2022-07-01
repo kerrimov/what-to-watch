@@ -4,15 +4,11 @@ import { Logo } from "./Logo";
 import { Navigation } from "./Navigation";
 import { LoginLink } from "./LoginLink";
 import { SearchField } from "../SearchField";
-import "./style.scss";
-
-const style = {
-  bgcolor: "primary.dark",
-};
+import "./header.scss";
 
 export const Header = () => (
   <AppBar>
-    <Toolbar className="header" sx={style}>
+    <Toolbar className="header">
       <div className="left-container">
         <Logo />
         <Navigation />

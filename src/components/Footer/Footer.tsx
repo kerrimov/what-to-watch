@@ -9,7 +9,6 @@ const style = {
     backgroundColor: "primary.main",
     height: "250px",
     paddingTop: "100px",
-    position: "fixed",
     width: "100%",
     bottom: "0",
   },

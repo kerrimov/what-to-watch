@@ -1,15 +1,19 @@
 import React from "react";
 import { Card, CardContent, CardMedia, Typography, Box, Modal } from "@mui/material";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import { useDispatch } from "react-redux";
+import { Endpoints } from "../../api/constants/endpoints";
+import { TrailersActions } from "../../types/TrailersTypes";
 
 interface Props {
   filmName: string
   img: string
+  trailerKey: string
 };
 
-export const VideoCard = ({ filmName, img }: Props) => {
+export const VideoCard = ({ filmName, img, trailerKey }: Props) => {
 
-  const style = {
+  const styleIframeBox = {
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -22,24 +26,45 @@ export const VideoCard = ({ filmName, img }: Props) => {
     }
   };
 
+  const styleTreilerCard = {
+    position: "relative",
+    maxWidth: 300,
+    borderRadius: 3,
+    margin: "auto",
+    transition: "transform 0.5s;",
+    "&:hover": {
+      transform: "scale(1.1)"
+    }
+  };
+
+  const styleIconPlay = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "3rem",
+    height: "3rem",
+    color: "white"
+  };
+
   const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpenClose = () => {
+    setOpen(prevState => !prevState);
+  };
+
+  const dispatch = useDispatch();
+
+  const changeBackground = () => {
+    dispatch({ type: TrailersActions.CHANGE_BACKGROUND, payload: img });
+  };
+
+  const treilerUrl = `${Endpoints.TRAILER_PATH}${trailerKey}${Endpoints.TRAILER_QUERY_PARAM}`;
 
   return (
     <>
-      <Card onClick={handleOpen} sx={{
-        position: "relative",
-        maxWidth: 300,
-        borderRadius: 3,
-        margin: "auto",
-        transition: "transform 0.5s;",
-        "&:hover": {
-          transform: "scale(1.1)"
-        }
-      }} >
-        <PlayCircleOutlineIcon sx={{position: "absolute", top: "37%", left: "42%", width: "3rem", height: "3rem", color: "white"}}/>
+      <Card onClick={handleOpenClose} onMouseOver={changeBackground} sx={styleTreilerCard} >
+        <PlayCircleOutlineIcon sx={styleIconPlay} />
         <CardMedia
           component='img'
           image={img}
@@ -48,11 +73,11 @@ export const VideoCard = ({ filmName, img }: Props) => {
       </Card>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={handleOpenClose}
       >
-        <Box sx={style}>
+        <Box sx={styleIframeBox}>
           <iframe title="iframe" width="1467" height="824" frameBorder="0"
-            src="//www.youtube.com/embed/9MgxZ5KUBwo?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en&modestbranding=1&fs=1&autohide=1"
+            src={treilerUrl}
           ></iframe>
         </Box>
       </Modal>

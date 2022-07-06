@@ -1,12 +1,13 @@
 import { cardData } from "../../../mocks/cardData";
-import { InitialTrailersState, TrailersActions, TreilersAction } from "../types/TrailersTypes";
+import { InitialTrailersState, TrailersActions, TrailersAction } from "../types/TrailersTypes";
 
+const [defaultBanner] = cardData;
 
 const defaultState: InitialTrailersState = {
-    banner: `${cardData[0]["backdrop_path"]}`
+    banner: `${defaultBanner["backdrop_path"]}`
 };
 
-export const treilerReducer = (state = defaultState, action: TreilersAction) => {
+export const trailerReducer = (state: InitialTrailersState = defaultState, action: TrailersAction) => {
     switch (action.type) {
         case TrailersActions.CHANGE_BACKGROUND:
             return {...state, banner: action.payload};

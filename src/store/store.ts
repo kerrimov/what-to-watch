@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { treilerReducer } from "../components/Trailers/reducers/trailersReducer";
+import { trailerReducer } from "../components/Trailers/reducers/trailersReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-    treilerReducer: treilerReducer
+    trailerReducer: trailerReducer
 });
 
 export const store = configureStore({

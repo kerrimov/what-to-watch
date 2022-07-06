@@ -7,7 +7,7 @@ import { RootState } from "../../store/store";
 
 export const Trailers = () => {
 
-    const banner = useSelector<RootState, string>(state => state.treilerReducer.banner);
+    const banner = useSelector<RootState, string>(state => state.trailerReducer.banner);
 
     const styles = {
         mx: "auto",

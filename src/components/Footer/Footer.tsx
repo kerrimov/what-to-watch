@@ -8,10 +8,10 @@ const style = {
   wrapper: {
     backgroundColor: "primary.main",
     height: "250px",
-    paddingTop: "40px",
+    paddingTop: "100px",
+    position: "fixed",
     width: "100%",
     bottom: "0",
-    right: "0",
   },
   avatar: {
     width: "150px",

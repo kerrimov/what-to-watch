@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardMedia, Typography, Box, Modal } from "@mui/material";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { useDispatch } from "react-redux";
 import { Endpoints } from "../../api/constants/endpoints";
-import { TrailersActions } from "../../types/TrailersTypes";
+import { changeBackground } from "../../api/actions/actionCreators";
 
 interface Props {
   filmName: string
@@ -47,23 +47,21 @@ export const VideoCard = ({ filmName, img, trailerKey }: Props) => {
     color: "white"
   };
 
-  const [open, setOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handleOpenClose = () => {
-    setOpen(prevState => !prevState);
-  };
+  const toggleTrailerModal = () => setIsOpen(!isOpen);
 
   const dispatch = useDispatch();
 
-  const changeBackground = () => {
-    dispatch({ type: TrailersActions.CHANGE_BACKGROUND, payload: img });
+  const changeBackgroundTrailersSection = () => {
+    dispatch(changeBackground(img));
   };
 
-  const treilerUrl = `${Endpoints.TRAILER_PATH}${trailerKey}${Endpoints.TRAILER_QUERY_PARAM}`;
+  const trailerUrl = `${Endpoints.TRAILER_PATH}${trailerKey}${Endpoints.TRAILER_QUERY_PARAM}`;
 
   return (
     <>
-      <Card onClick={handleOpenClose} onMouseOver={changeBackground} sx={styleTreilerCard} >
+      <Card onClick={toggleTrailerModal} onMouseOver={changeBackgroundTrailersSection} sx={styleTreilerCard} >
         <PlayCircleOutlineIcon sx={styleIconPlay} />
         <CardMedia
           component='img'
@@ -72,12 +70,12 @@ export const VideoCard = ({ filmName, img, trailerKey }: Props) => {
         />
       </Card>
       <Modal
-        open={open}
-        onClose={handleOpenClose}
+        open={isOpen}
+        onClose={toggleTrailerModal}
       >
         <Box sx={styleIframeBox}>
           <iframe title="iframe" width="1467" height="824" frameBorder="0"
-            src={treilerUrl}
+            src={trailerUrl}
           ></iframe>
         </Box>
       </Modal>

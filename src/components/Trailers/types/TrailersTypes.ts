@@ -6,7 +6,7 @@ export interface InitialTrailersState {
     banner: string;
 };
 
-export interface TreilersAction {
+export interface TrailersAction {
     type: "CHANGE_BACKGROUND";
     payload: string;
 };

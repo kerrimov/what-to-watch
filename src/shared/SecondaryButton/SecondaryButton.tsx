@@ -14,8 +14,8 @@ const style = {
   }
 };
 
-export const SecondaryButton: React.FC<Props> = (props: Props) => (
+export const SecondaryButton: React.FC<Props> = ({children}: Props) => (
   <Button variant="contained" color="secondary" className="button" sx={style}>
-    {props.children}
+    {children}
   </Button>
 );

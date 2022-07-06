@@ -22,16 +22,18 @@ const initialState: UserState = {
 
 export const userReducer = (state: UserState = initialState, action: UserActions) => {
   switch (action.type) {
-    case UserActionTypes.USER_REQUEST:
+    case UserActionTypes.TOKEN_REQUEST:
       return { ...state, isFetching: true };
-    case UserActionTypes.USER_REQUEST_SUCCESS:
+    case UserActionTypes.TOKEN_REQUEST_SUCCESS:
       return { ...state, isFetching: false };
-    case UserActionTypes.USER_REQUEST_FAILURE:
+    case UserActionTypes.TOKEN_REQUEST_FAILURE:
       return {
         ...state,
         isFetching: false,
         error: true,
       };
+    case UserActionTypes.USER_REQUEST:
+      return { ...state, isFetching: true };
     case UserActionTypes.USER_LOGIN_SUCCESS:
       return {
         ...state,

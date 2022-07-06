@@ -23,24 +23,28 @@ export interface userAccount {
 }
 
 export enum UserActionTypes {
+  TOKEN_REQUEST = "USER_TOKEN_REQUEST",
+  TOKEN_REQUEST_SUCCESS = "USER_TOKEN_REQUEST_SUCCESS",
+  TOKEN_REQUEST_FAILURE = "USER_TOKEN_REQUEST_FAILURE",
   USER_REQUEST = "USER_REQUEST",
-  USER_REQUEST_SUCCESS = "USER_REQUEST_SUCCESS",
-  USER_REQUEST_FAILURE = "USER_REQUEST_FAILURE",
   USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS",
-  USER_LOGOUT = "USER_LOGOUT",
   USER_LOGIN_ERROR = "USER_LOGIN_ERROR",
+  USER_LOGOUT = "USER_LOGOUT",
 }
 
+export interface TokenRquestAction {
+  type: UserActionTypes.TOKEN_REQUEST;
+}
+export interface TokenRequestSuccessAction {
+  type: UserActionTypes.TOKEN_REQUEST_SUCCESS;
+}
+export interface TokenRequestFailureAction {
+  type: UserActionTypes.TOKEN_REQUEST_FAILURE;
+}
 export interface UserRequestAction {
   type: UserActionTypes.USER_REQUEST;
 }
-export interface UserRequestSuccessAction {
-  type: UserActionTypes.USER_REQUEST_SUCCESS;
-}
-export interface UserRequestFailureAction {
-  type: UserActionTypes.USER_REQUEST_FAILURE;
-}
-export interface UserLoginAction {
+export interface UserLoginSuccessAction {
   type: UserActionTypes.USER_LOGIN_SUCCESS;
   payload: { account: userAccount };
 }
@@ -52,9 +56,10 @@ export interface UserLoginErrorAction {
 }
 
 export type UserActions =
+  | TokenRquestAction
+  | TokenRequestSuccessAction
+  | TokenRequestFailureAction
   | UserRequestAction
-  | UserLoginAction
-  | UserLogoutAction
+  | UserLoginSuccessAction
   | UserLoginErrorAction
-  | UserRequestSuccessAction
-  | UserRequestFailureAction;
+  | UserLogoutAction;

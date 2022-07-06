@@ -2,23 +2,24 @@ import { Dispatch } from "redux";
 import { createSession, getAccount, requestToken } from "../userAuth";
 import { UserActions } from "../../types/user";
 import {
-  loginErrorAction,
-  loginAction,
-  userRequestFailureAction,
-  userRequestSuccessAction,
   userRequestAction,
-} from "../../userReducer/actionCreators/actionCreators";
+  loginErrorAction,
+  loginSuccessAction,
+  tokenRequestAction,
+  tokenRequestFailureAction,
+  tokenRequestSuccessAction,
+} from "../../actionCreators/actionCreators";
 
 export const fetchToken = () => {
   return async (dispatch: Dispatch<UserActions>) => {
     try {
-      dispatch(userRequestAction());
+      dispatch(tokenRequestAction());
       const token = await requestToken();
-      dispatch(userRequestSuccessAction());
+      dispatch(tokenRequestSuccessAction());
       const redirectUrl = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${process.env.REACT_APP_REDIRECT_PATH}`;
       window.open(redirectUrl, "_self", "noreferrer");
     } catch (error) {
-      dispatch(userRequestFailureAction());
+      dispatch(tokenRequestFailureAction());
     }
   };
 };
@@ -29,7 +30,7 @@ export const fetchSessionAndGetUser = (token: string) => {
       dispatch(userRequestAction());
       const sessionId = await createSession(token);
       const account = await getAccount(sessionId);
-      dispatch(loginAction(account));
+      dispatch(loginSuccessAction(account));
     } catch (error) {
       dispatch(loginErrorAction());
     }

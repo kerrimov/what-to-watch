@@ -12,17 +12,11 @@ const style = {
   "&:hover": {
     boxShadow: "none",
     color: "primary.contrastText",
-  },
+  }
 };
 
 export const SecondaryButton: React.FC<Props> = (props: Props) => (
-  <Button
-    variant="contained"
-    color="secondary"
-    className="button"
-    sx={style}
-    onClick={props.clickHandler}
-  >
+  <Button variant="contained" color="secondary" className="button" sx={style} onClick={props.clickHandler}>
     {props.children}
   </Button>
 );

@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 import { Navigation } from "./Navigation";
 import { LoginLink } from "./LoginLink";
 import { SearchField } from "../SearchField";
-import "./header.scss";
+import "./Header.scss";
 
 export const Header = () => (
   <AppBar>

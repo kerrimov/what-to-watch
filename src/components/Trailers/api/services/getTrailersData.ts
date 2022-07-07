@@ -1,5 +1,5 @@
-import { cardData } from "../../../../mocks/cardData";
+import { Card } from "../../../CardContainer/types/Card";
 
-export const getTrailersData = () => (
-    cardData.slice(0,4)
+export const getTrailersData = (data: Array<Card>) => (
+    data.slice(0,4)
 );

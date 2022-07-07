@@ -2,8 +2,9 @@ import * as React from "react";
 import { Box, Grid } from "@mui/material";
 import { VideoCard } from "./VideoCard/VideoCard";
 import { getTrailersData } from "../api/services/getTrailersData";
+import { cardData } from "../../../mocks/cardData";
 
-const trailersData = getTrailersData();
+const trailersData = getTrailersData(cardData);
 
 export const GridCard = () => (
   <Box sx={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2 }}>

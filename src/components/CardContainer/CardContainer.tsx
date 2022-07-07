@@ -5,7 +5,7 @@ import { cardData } from "../../mocks/cardData";
 
 export const CardContainer = () => {
   return (
-    <Box sx={{ mx: "auto", mt: 10, maxWidth: 1300, flexGrow: 1 }}>
+    <Box sx={{ mx: "auto", mt: 15, maxWidth: 1300, flexGrow: 1 }}>
       <Grid justifyContent="space-around" container>
         {cardData.map((card) => (
           <Grid item xs={6} sm={4} md={3} lg={1.7} key={card["id"]}>

@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { createSession, getAccount, requestToken } from "../userAuth";
+import { createSession, deleteSession, getAccount, requestToken } from "../userAuth";
 import { UserActions } from "../../types/user";
 import {
   userRequestAction,
@@ -8,6 +8,7 @@ import {
   tokenRequestAction,
   tokenRequestFailureAction,
   tokenRequestSuccessAction,
+  logoutAction,
 } from "../../actionCreators/actionCreators";
 
 export const fetchToken = () => {
@@ -34,5 +35,12 @@ export const fetchSessionAndGetUser = (token: string) => {
     } catch (error) {
       dispatch(loginErrorAction());
     }
+  };
+};
+
+export const logout = (sesionId:string) => {
+  return async (dispatch: Dispatch<UserActions>) => {
+    deleteSession(sesionId);
+    dispatch(logoutAction());
   };
 };

@@ -11,7 +11,7 @@ import { UserKeys } from "./LoginApi/constants/UserKeys";
 
 export const Login: React.FC = () => {
   const style = {
-    marginTop: 8,
+    marginTop: 10,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

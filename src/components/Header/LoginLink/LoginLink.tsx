@@ -7,6 +7,7 @@ import { Dispatch } from "redux";
 import { UserActions } from "../../Login/types/user";
 import { UserKeys } from "../../Login/LoginApi/constants/UserKeys";
 import { logout } from "../../Login/LoginApi/services/services";
+import { Path } from "../../Router/PathList";
 
 export const LoginLink = () => {
   const login = useSelector<RootState, boolean>((state) => state.user.isLoggedIn);
@@ -24,7 +25,7 @@ export const LoginLink = () => {
       {login ? (
         <Button onClick={logoutClick}>Log out</Button>
       ) : (
-        <Button component={Link} to="/login">
+        <Button component={Link} to={Path.LOGIN}>
           Log in
         </Button>
       )}

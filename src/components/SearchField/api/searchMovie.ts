@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
-
 const API_SEARCH_MOVIE = "https://api.themoviedb.org/3/search/movie";
 
 const input = document.getElementById("searchInput") as HTMLInputElement | null;

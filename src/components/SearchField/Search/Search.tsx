@@ -12,5 +12,5 @@ const style = {
 };
 
 export const Search: React.FC = () => (
-  <Input id="searchInput" placeholder="Enter movie name" sx={style} />
+  <Input id="searchInput" className="searchInput" placeholder="Enter movie name" sx={style} />
 );

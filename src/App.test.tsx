@@ -16,7 +16,9 @@ describe("Click in App", () => {
     const likes = getAllByRole("checkbox");
     likes.forEach((like) => {
       expect(like).not.toBeChecked();
-      act(() => { fireEvent.click(like); });
+      act(() => {
+        fireEvent.click(like);
+      });
       expect(like).toBeChecked();
     });
   });

@@ -1,4 +1,4 @@
-import { Card } from "../components/CardContainer/types/Card";
+import { Card } from "../types/CardTypes";
 
 export const cardData: Array<Card> = [
     {

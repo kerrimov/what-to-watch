@@ -24,14 +24,14 @@ export const RatingLabel = ({ filmRating }: Props) => (
     borderRadius: "50%"
   }}
   >
-    <CircularProgress variant="determinate" value={filmRating} />
+    <CircularProgress variant="determinate" value={Math.round(filmRating*10)} />
     <Box sx={styles}>
       <Typography
         variant="caption"
         component="div"
         color="white"
       >
-        {`${Math.round(filmRating)}%`}
+        {`${Math.round(filmRating*10)}%`}
       </Typography>
     </Box>
   </Box>

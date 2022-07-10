@@ -7,7 +7,7 @@ import { Endpoints } from "./api/constants/endpoints";
 import { Card, InitialCardsState } from "./types/CardTypes";
 import { AppDispatch, RootState } from "../../store";
 import { ErrorMessage } from "../../shared/ErrorMessage";
-import { DownloadProgress } from "../../shared/DownloadProgress";
+import { Loader } from "../../shared/Loader";
 
 export const CardContainer = () => {
 
@@ -38,6 +38,6 @@ export const CardContainer = () => {
             ))}
           </Grid>
         </Box>
-      : <DownloadProgress />
+      : <Loader />
   );
 };

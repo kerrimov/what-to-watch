@@ -6,16 +6,13 @@ interface ErrorMessageProps {
     error: SerializedError
 }
 
-export const ErrorMessage = ({error}: ErrorMessageProps) => {
-
-    return (
-        <Box justifyContent="center" align-items="center" sx={{ display: "flex", mt: 15 }}>
-            <Alert severity="error" sx={{ display: "flex", width: 300 }} >
-                <AlertTitle>
-                    Error
-                </AlertTitle>
-                {error.message}
-            </Alert>
-        </Box>
-    );
-};
+export const ErrorMessage = ({ error }: ErrorMessageProps) => (
+    <Box justifyContent="center" align-items="center" sx={{ display: "flex", mt: 15 }}>
+        <Alert severity="error" sx={{ display: "flex", width: 300 }} >
+            <AlertTitle>
+                Error
+            </AlertTitle>
+            {error.message}
+        </Alert>
+    </Box>
+);
